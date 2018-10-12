@@ -4,7 +4,7 @@ class KickstarterModel:
 
         self.model = None
 
-    def preprocess_training_data(self, path_to_csv):
+    def preprocess_training_data(self, df):
 
         raise NotImplementedError
 
@@ -12,7 +12,7 @@ class KickstarterModel:
 
         raise NotImplementedError
 
-    def preprocess_unseen_data(self, path_to_csv):
+    def preprocess_unseen_data(self, df):
 
         raise NotImplementedError
 

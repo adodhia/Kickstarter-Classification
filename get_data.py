@@ -1,9 +1,9 @@
 import os
 import urllib.request
 
-DATASET_URL = "https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/train.csv"
+DATASET_URL = "https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/train.zip"
 DATA_DIR = "data"
-DATA_FILENAME = "train.csv"
+DATA_FILENAME = "train.zip"
 
 if __name__ == "__main__":
 

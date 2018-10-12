@@ -25,7 +25,7 @@ python get_data.py
 from within the repository. It may take a few minutes as it needs to download the dataset.
 
 Alternatively, you can download the data manually and place it in a `data/` folder:
-* Download the dataset from [here](https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/train.csv).
+* Download the dataset from [here](https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/train.zip).
 * Create a new directory called `data/`
 * Place it in the `data/` folder.
 
