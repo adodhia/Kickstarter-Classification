@@ -13,14 +13,15 @@ If you have a project that you would like to post on Kickstarter now, can you pr
 The goal of this project is to build a classifier to predict whether a project will be successfully funded, you can use the algorithm of your choice.
 
 **Notes**:
-* The target, `state` can take several values (`'canceled'`,`'live'`,`'suspended'`,`'failed'`). Here we want to convert it to a binary outcome: `1` if `successful` or `0` for all other outcomes.
-* The variables `'deadline', 'state_changed_at', 'created_at', 'launched_at'` are stored in Unix time format.
+* The target, `state` can take two values `successful` or `'failed'`). Here we want to convert it to a binary outcome: `1` if `successful` or `0` if `failed`.
+* The variables `'deadline'', 'created_at', 'launched_at'` are stored in Unix time format.
 
 ## Get the data
 
-We provide a file, `get_data.py` that you can use to download the data in the right place; in a terminal run:
-```
-python get_data.py
+We provide a file, `run.py` that you can use to manage the project. To download the data in the right place; in a terminal run:
+
+```python
+python run.py setup
 ```
 from within the repository.
 
@@ -34,6 +35,6 @@ Since the dataset is quite big, it will not be tracked by the system (see the `.
 
 ## Start working
 
-You will need to implement the class `KickstarterModel` in `model.py` and run the `pickler.py` to train your model and save its state to a file.
+You will need to implement the class `KickstarterModel` in `model.py` and use the `run.py` to train your model and save its state to a file.
 
 Check the Machine Learning help page on K.A.T.E. for more details on how to do so.
