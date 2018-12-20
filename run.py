@@ -7,9 +7,11 @@ import pandas as pd
 
 from model import KickstarterModel as Model
 
-DATASET_URL = "https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/train.zip"
+DATASET_URL = "https://s3-eu-west-1.amazonaws.com/kate-datasets/kickstarter/"
+TRAIN_NAME = "train.zip"
+TEST_NAME = "test.zip"
+
 DATA_DIR = "data"
-DATA_FILENAME = "train.zip"
 PICKLE_NAME = 'model.pickle'
 
 
@@ -17,15 +19,17 @@ def setup_data():
     if not os.path.isdir(DATA_DIR):
         os.makedirs(DATA_DIR)
 
-    req = urllib.request.urlopen(DATASET_URL)
-    data = req.read()
+    for filename in [TRAIN_NAME, TEST_NAME]:
+        print("Downloading {}...".format(filename))
+        req = urllib.request.urlopen(DATASET_URL + filename)
+        data = req.read()
 
-    with open(os.path.join(DATA_DIR, DATA_FILENAME), "wb") as f:
-        f.write(data)
+        with open(os.path.join(DATA_DIR, filename), "wb") as f:
+            f.write(data)
 
 
 def train_model():
-    df = pd.read_csv(os.sep.join([DATA_DIR, DATA_FILENAME]))
+    df = pd.read_csv(os.sep.join([DATA_DIR, TRAIN_NAME]))
 
     my_model = Model()
     X_train, y_train = my_model.preprocess_training_data(df)
@@ -37,7 +41,7 @@ def train_model():
 
 
 def test_model():
-    df = pd.read_csv(os.sep.join([DATA_DIR, DATA_FILENAME]), nrows=20)
+    df = pd.read_csv(os.sep.join([DATA_DIR, TEST_NAME]))
 
     # Load pickle
     with open(PICKLE_NAME, 'rb') as f:
@@ -62,8 +66,8 @@ def main():
     stage = parser.parse_args().stage
 
     if stage == "setup":
-        print("Downloading dataset...")
         setup_data()
+        print("\nSetup was successful!")
 
     elif stage == "train":
         print("Training model...")
