@@ -108,4 +108,5 @@ class KickstarterModel:
 
     def predict(self, X):
 
-        raise NotImplementedError
+        return self.model.predict(x)
+
