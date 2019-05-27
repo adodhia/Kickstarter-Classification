@@ -51,8 +51,7 @@ class KickstarterModel:
         x['len_desc'] = x.blurb.str.len()
         x['name_word_count'] = x.name.str.split().str.len()
         x['desc_word_count'] = x.blurb.str.split().str.len()
-        x['desc_avg_word_len'] = x.blurb.apply(lambda s: np.mean(
-            [len(w) for w in s.split(' ')]))
+        x['desc_avg_word_len'] = x.blurb.apply(lambda s: np.mean([len(w) for w in s.split(' ')]))
         x.drop(['name', 'blurb'], axis=1, inplace=True)
 
         # Logs / exps
