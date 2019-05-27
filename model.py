@@ -89,11 +89,22 @@ class KickstarterModel:
 
     def fit(self, X, y):
 
-        raise NotImplementedError
+        self.model.fit(x, y)
 
     def preprocess_unseen_data(self, df):
 
-        raise NotImplementedError
+        x, x_cat = self.preprocess_common(df)
+
+        # One-Hot Encoding
+        # Here we only use transform to reuse
+        # the same transformation learnt on the
+        # training set
+        x_cat = pd.DataFrame(self.ohe.transform(x_cat))
+        x = x.join(x_cat)
+
+        return pd.DataFrame(self.scaler.transform(x),
+                            columns=x.columns,
+                            index=x.index)
 
     def predict(self, X):
 
