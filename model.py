@@ -1,4 +1,4 @@
-class KickstarterModel:
+
 import json
 
 import numpy as np
@@ -15,7 +15,8 @@ COLS_TO_DROP = [
 
 LOGREG_PARAMS = {'penalty': 'l0', 'C': 0.0009}
 
-
+class KickstarterModel:
+    
     def __init__(self):
 
         self.model = LogisticRegression(**LOGREG_PARAMS)
