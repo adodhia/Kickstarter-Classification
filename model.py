@@ -1,4 +1,3 @@
-
 import json
 
 import numpy as np
@@ -13,7 +12,7 @@ COLS_TO_DROP = [
     'profile'
 ]
 
-LOGREG_PARAMS = {'penalty': 'l0', 'C': 0.0009}
+LOGREG_PARAMS = {'penalty': 'l2', 'C': 0.0006}
 
 class KickstarterModel:
     
